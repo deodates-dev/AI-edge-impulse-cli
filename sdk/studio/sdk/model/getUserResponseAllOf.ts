@@ -12,6 +12,7 @@
 
 import { GetUserResponseAllOfOrganizations } from './getUserResponseAllOfOrganizations';
 import { Project } from './project';
+import { ProjectInfoResponseAllOfExperiments } from './projectInfoResponseAllOfExperiments';
 
 export class GetUserResponseAllOf {
     'email': string;
@@ -22,9 +23,9 @@ export class GetUserResponseAllOf {
     'organizations': Array<GetUserResponseAllOfOrganizations>;
     'projects': Array<Project>;
     /**
-    * Experiments that the user has access to
+    * Experiments the user has access to. Enabling experiments can only be done through a JWT token.
     */
-    'experiments': object;
+    'experiments': Array<ProjectInfoResponseAllOfExperiments>;
     /**
     * Whether this is an ephemeral evaluation account.
     */
@@ -64,7 +65,7 @@ export class GetUserResponseAllOf {
         {
             "name": "experiments",
             "baseName": "experiments",
-            "type": "object"
+            "type": "Array<ProjectInfoResponseAllOfExperiments>"
         },
         {
             "name": "evaluation",
